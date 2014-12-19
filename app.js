@@ -1,11 +1,9 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express')
   , http = require('http')
-  , path = require('path')
   , app = express()
   , json = require('./routes')
   , server;
@@ -34,14 +32,6 @@ exports.start = function() {
     });
     next();
   });
-
-  // serve files from the root folder of the project
-  app.use('/static', express.static(path.join(__dirname, '..')));
-
-  // development only
-  if ('development' === app.get('env')) {
-    app.use(express.errorHandler());
-  }
 
   var auth = express.basicAuth('traverson', 'verysecretpassword');
 
@@ -79,3 +69,8 @@ exports.stop = function() {
   console.log('Stopping Traverson test server.');
   server.close();
 };
+
+exports.serveStatic = function(dir) {
+  app.use('/static', express.static(dir));
+}
+
