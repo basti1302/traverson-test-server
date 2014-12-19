@@ -6,7 +6,7 @@ A little server serving an API, used by various Traverson projects for testing p
 Release Notes
 -------------
 
-* 1.0.0 2014-12-09: Initial release
+* 1.0.0 2014-12-19: Initial release
 
 License
 -------
