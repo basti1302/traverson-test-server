@@ -22,9 +22,8 @@ exports.start = function() {
     res.header({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers':
-        'X-Requested-With, Access-Control-Allow-Origin, ' +
-        'X-HTTP-Method-Override, Content-Type, Authorization, Accept,' +
-        ' X-Traverson-Test-Header',
+        'Access-Control-Allow-Origin, X-HTTP-Method-Override, Content-Type, ' +
+        'Authorization, Accept, X-Traverson-Test-Header',
       'Access-Control-Allow-Methods':
         'HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS',
       'Access-Control-Allow-Credentials': true,
