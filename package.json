@@ -1,6 +1,6 @@
 {
   "name": "traverson-test-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Bastian Krol <bastian.krol@web.de>",
   "description": "Test server used in various Traverson projects.",
   "repository": {
@@ -8,9 +8,6 @@
     "url": "https://github.com/basti1302/traverson-test-server.git"
   },
   "main": "app.js",
-  "xxxbin": {
-    "traverson-test-server": "start-test-server.js"
-  },
   "bin": {
     "start-traverson-test-server": "bin/start-test-server.js"
   },
