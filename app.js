@@ -48,6 +48,8 @@ exports.start = function() {
   app.get('/junk', json.junk.get);
   app.get('/echo/headers', json.echoHeaders.get);
   app.get('/echo/query', json.echoQuery.get);
+  app.get('/echo/all', json.echoAll.get);
+  app.post('/echo/all', json.echoAll.post);
   app.get('/does/not/exist', json['404']);
 
   app.get('/quit', function(req, res) {

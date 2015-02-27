@@ -25,6 +25,7 @@ module.exports = {
             'blind_alley': root + '/does/not/exist',
             'echo-headers': root + '/echo/headers',
             'echo-query': root + '/echo/query',
+            'echo-all': root + '/echo/all',
             'garbage': root + '/junk'
           });
         },
@@ -171,7 +172,7 @@ module.exports = {
       Object.keys(req.headers).forEach(function(key) {
         echo[key] = req.headers[key];
       });
-      res.send(echo);
+      res.json(echo);
     }
   },
 
@@ -181,8 +182,42 @@ module.exports = {
       Object.keys(req.query).forEach(function(key) {
         echo[key] = req.query[key];
       });
-      res.send(echo);
+      res.json(echo);
     }
+  },
+
+  echoAll: {
+    get: function(req, res) {
+      var echo = {
+        headers: {},
+        query: {},
+      };
+      Object.keys(req.headers).forEach(function(key) {
+        echo.headers[key] = req.headers[key];
+      });
+      Object.keys(req.query).forEach(function(key) {
+        echo.query[key] = req.query[key];
+      });
+      res.json(echo);
+    },
+    post: function(req, res) {
+      if (req.body == null) {
+        return res.status(400).json({ message: 'bad request - no body?' });
+      }
+      var echo = {
+        headers: {},
+        query: {},
+      };
+      Object.keys(req.headers).forEach(function(key) {
+        echo.headers[key] = req.headers[key];
+      });
+      Object.keys(req.query).forEach(function(key) {
+        echo.query[key] = req.query[key];
+      });
+      echo.received = req.body;
+      res.status(201).json(echo);
+    }
+
   },
 
   junk: {
