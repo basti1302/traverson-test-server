@@ -1,22 +1,20 @@
-/**
- * Module dependencies.
- */
+'use strict';
 
 var express = require('express')
-  , http = require('http')
   , app = express()
+  , basicAuth = require('basic-auth-connect')
+  , bodyParser = require('body-parser')
+  , http = require('http')
   , json = require('./routes')
+  , methodOverride = require('method-override')
   , server;
 
 exports.start = function() {
   // all environments
   app.set('port', process.env.PORT || 2808);
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.json());
-  app.use(express.urlencoded());
-  app.use(express.methodOverride());
-  app.use(app.router);
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded());
+  app.use(methodOverride());
 
   app.all('*', function(req, res, next) {
     res.header({
@@ -32,14 +30,14 @@ exports.start = function() {
     next();
   });
 
-  var auth = express.basicAuth('traverson', 'verysecretpassword');
-
+  // TODO Create a proper sub router and have only one app.use statement here.
   app.get('/', json.root.get);
   app.get('/first', json.first.get);
   app.get('/second', json.second.get);
   app.get('/second/document', json.second.document.get);
   app.get('/third', json.third.get);
-  app.get('/basic/auth', auth, json.auth.get);
+  app.get('/basic/auth', basicAuth('traverson', 'verysecretpassword'),
+      json.auth.get);
   app.get(/^\/(\w+)\/fixed\/(\w+)?$/, json.uriTemplate.get);
   app.post('/postings', json.postings.post);
   app.put('/puttings/42', json.puttings.put);
@@ -51,6 +49,8 @@ exports.start = function() {
   app.get('/echo/all', json.echoAll.get);
   app.post('/echo/all', json.echoAll.post);
   app.get('/does/not/exist', json['404']);
+
+  app.use('/maze', require('./routes/maze'));
 
   app.get('/quit', function(req, res) {
     res.status(204).end();

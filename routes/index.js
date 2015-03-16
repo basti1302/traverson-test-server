@@ -1,3 +1,5 @@
+'use strict';
+
 function baseUrl(req) {
   return req.protocol + '://' + req.host + ':' + global.port;
 }
