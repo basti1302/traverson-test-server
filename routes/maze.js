@@ -25,7 +25,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/start', function(req, res) {
-  return res.json({ start: '/maze/1/1', });
+  return res.json({ enter: '/maze/1/1', });
 });
 
 router.get('/1/1', function(req, res) {
@@ -45,7 +45,7 @@ router.get('/1/4', function(req, res) {
 });
 
 router.get('/1/5', function(req, res) {
-  return res.json({ south: '/maze/1/4', exit: '/maze/exit',  });
+  return res.json({ south: '/maze/1/4', leave: '/maze/exit',  });
 });
 
 router.get('/2/1', function(req, res) {
@@ -165,7 +165,7 @@ router.get('/6/4', function(req, res) {
 });
 
 router.get('/exit', function(req, res) {
-  return res.json({ statusouth: 'finished' });
+  return res.json({ status: 'finished' });
 });
 
 module.exports = router;
