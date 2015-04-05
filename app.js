@@ -3,6 +3,7 @@
 var express = require('express')
   , app = express()
   , bodyParser = require('body-parser')
+  , cors = require('cors')
   , http = require('http')
   , methodOverride = require('method-override')
   , server;
@@ -14,19 +15,10 @@ exports.start = function() {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(methodOverride());
 
-  app.all('*', function(req, res, next) {
-    res.header({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers':
-        'Access-Control-Allow-Origin, X-HTTP-Method-Override, Content-Type, ' +
-        'Authorization, Accept, X-Traverson-Test-Header',
-      'Access-Control-Allow-Methods':
-        'HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS',
-      'Access-Control-Allow-Credentials': true,
-      'Access-Control-Max-Age': '86400' // 24 hours
-    });
-    next();
-  });
+  // enable CORS header
+  app.use(cors());
+  // enable pre-flight for put/patch/delete
+  app.options('*', cors());
 
   app.get('/quit', function(req, res) {
     res.status(204).end();

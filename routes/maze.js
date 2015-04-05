@@ -29,10 +29,6 @@ var express = require('express')
   'delete',
 ].forEach(function(verb) {
 
-  router[verb]('/', function(req, res) {
-    return res.redirect('/maze/start');
-  });
-
   router[verb]('/start', function(req, res) {
     return res.json({ enter: '/maze/1/1', });
   });
