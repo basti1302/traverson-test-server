@@ -9,27 +9,28 @@ var json = {
 
   root: {
     get: function(req, res) {
-      var root = baseUrl(req);
+      var rootUrl = baseUrl(req);
       res.format({
 
         'application/json': function() {
           res.json({
-            'first': root + '/first',
-            'second': root + '/second',
+            'first': rootUrl + '/first',
+            'second': rootUrl + '/second',
             'jsonpath': {
-              'nested': { 'key': root + '/third' }
+              'nested': { 'key': rootUrl + '/third' }
             },
-            'auth': root + '/basic/auth',
-            'uri_template': root + '/{param}/fixed{/id}',
-            'post_link': root + '/postings',
-            'put_link': root + '/puttings/42',
-            'patch_link': root + '/patch/me',
-            'delete_link': root + '/delete/me',
-            'blind_alley': root + '/does/not/exist',
-            'echo-headers': root + '/echo/headers',
-            'echo-query': root + '/echo/query',
-            'echo-all': root + '/echo/all',
-            'garbage': root + '/junk'
+            'auth': rootUrl + '/basic/auth',
+            'uri_template': rootUrl + '/{param}/fixed{/id}',
+            'post_link': rootUrl + '/postings',
+            'put_link': rootUrl + '/puttings/42',
+            'patch_link': rootUrl + '/patch/me',
+            'delete_link': rootUrl + '/delete/me',
+            'respond_location': rootUrl + '/respond/location',
+            'blind_alley': rootUrl + '/does/not/exist',
+            'echo-headers': rootUrl + '/echo/headers',
+            'echo-query': rootUrl + '/echo/query',
+            'echo-all': rootUrl + '/echo/all',
+            'garbage': rootUrl + '/junk'
           });
         },
 
@@ -51,7 +52,9 @@ var json = {
       res.format({
 
         'application/json': function() {
-          res.json({ 'first': 'document' });
+          res.json({
+            'first': 'document',
+          });
         },
 
         'application/hal+json': function() {
@@ -169,6 +172,17 @@ var json = {
     }
   },
 
+  location: {
+    get: function(req, res) {
+      res.location(baseUrl(req) + '/second');
+      res.status(200).json({
+        'there': 'is',
+        'no': 'link here',
+        'please': 'refer to the location header',
+      });
+    }
+  },
+
   echoHeaders: {
     get: function(req, res) {
       var echo = {};
@@ -247,6 +261,7 @@ router.post('/postings', json.postings.post);
 router.put('/puttings/42', json.puttings.put);
 router.patch('/patch/me', json.patchMe.patch);
 router.delete('/delete/me', json.deleteMe.del);
+router.get('/respond/location', json.location.get);
 router.get('/junk', json.junk.get);
 router.get('/echo/headers', json.echoHeaders.get);
 router.get('/echo/query', json.echoQuery.get);
