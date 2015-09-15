@@ -37,10 +37,11 @@ var json = {
         'application/hal+json': function() {
           res.json({
             '_links': {
-              'self': { 'href': '/' },
-              'first': { 'href': '/first' }
+              'self': { href: '/' },
+              'first': { href: '/first' },
+              'respond_location': { href: '/respond/location' },
             },
-            'data': 'much'
+            'data': 'much',
           });
         }
       });
@@ -174,11 +175,24 @@ var json = {
 
   location: {
     get: function(req, res) {
-      res.location(baseUrl(req) + '/second');
-      res.status(200).json({
-        'there': 'is',
-        'no': 'link here',
-        'please': 'refer to the location header',
+      res.format({
+        'application/json': function() {
+          res.location(baseUrl(req) + '/second');
+          res.status(200).json({
+            'there': 'is',
+            'no': 'link here',
+            'please': 'refer to the location header',
+          });
+        },
+        'application/hal+json': function() {
+          res.location(baseUrl(req) + '/second');
+          res.json({
+            '_links': {
+              'self': { href: '/respond/location' },
+            },
+            'use': 'the location header',
+          });
+        },
       });
     }
   },
