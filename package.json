@@ -1,13 +1,22 @@
 {
   "name": "traverson-test-server",
   "version": "1.7.0",
-  "author": "Bastian Krol <bastian.krol@web.de>",
   "description": "Test server used in various Traverson projects.",
   "repository": {
     "type": "git",
     "url": "https://github.com/basti1302/traverson-test-server.git"
   },
   "main": "app.js",
+  "author": {
+    "name": "Bastian Krol",
+    "email": "bastian.krol@web.de"
+  },
+  "contributors": [
+    {
+      "name": "Ricardo Costa",
+      "email": "rdscosta@gmail.com"
+    }
+  ],
   "bin": {
     "start-traverson-test-server": "bin/start-test-server.js"
   },
