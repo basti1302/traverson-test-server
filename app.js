@@ -16,7 +16,10 @@ exports.start = function() {
   app.use(methodOverride());
 
   // enable CORS header
-  app.use(cors());
+  app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:' + app.get('port')
+  }));
   // enable pre-flight for put/patch/delete
   app.options('*', cors());
 
