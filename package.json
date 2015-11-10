@@ -1,6 +1,6 @@
 {
   "name": "traverson-test-server",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "author": "Bastian Krol <bastian.krol@web.de>",
   "description": "Test server used in various Traverson projects.",
   "repository": {
