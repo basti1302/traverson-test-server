@@ -28,7 +28,7 @@
     "body-parser": "^1.17.0",
     "cors": "^2.8.1",
     "express": "^4.15.0",
-    "method-override": "^2.3.6"
+    "method-override": "^2.3.8"
   },
   "license": "MIT"
 }
