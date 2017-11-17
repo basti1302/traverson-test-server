@@ -25,10 +25,10 @@
   ],
   "dependencies": {
     "basic-auth-connect": "^1.0.0",
-    "body-parser": "^1.17.0",
-    "cors": "^2.8.1",
-    "express": "^4.15.0",
-    "method-override": "^2.3.8"
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "method-override": "^2.3.10"
   },
   "license": "MIT"
 }
