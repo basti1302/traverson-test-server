@@ -23,6 +23,9 @@
   "keywords": [
     "Traverson"
   ],
+  "scripts": {
+    "test": "echo \"no test specified\""
+  },
   "dependencies": {
     "basic-auth-connect": "^1.0.0",
     "body-parser": "^1.18.2",
