@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '10'
+sudo: false
+before_install:
+- npm install -g greenkeeper-lockfile
+install: npm install
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
+env:
+  global:
+    secure: d8rB2ZvNK+pwmchQKB/RJM1Ixu6wZjbmGTKzwjOJU860VEEhVCfbjmWG+pwuI5BIwMtbfujcjJZ5Z9ERDHmhauINq44B//3BbRfjxOF+mcq9LDmImafxGO7UyvHoQOjrwftsE+lo4629St7MxTN82R7mk3x7m/n1mVs4YXj9xcE=
