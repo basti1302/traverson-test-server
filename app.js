@@ -13,6 +13,7 @@ exports.start = function() {
   app.set('port', process.env.PORT || 2808);
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.text({ type: 'text/plain' }));
   app.use(methodOverride());
 
   // enable CORS header
