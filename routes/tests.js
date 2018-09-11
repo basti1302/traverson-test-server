@@ -138,7 +138,8 @@ var json = {
       }
       res.status(201).json({
         'document': 'created',
-        'received': req.body
+        'received': req.body,
+        'headers': req.headers
       });
     }
   },
@@ -150,7 +151,8 @@ var json = {
       }
       res.json({
         'document': 'overwritten',
-        'received': req.body
+        'received': req.body,
+        'headers': req.headers
       });
     }
   },
@@ -162,7 +164,8 @@ var json = {
       }
       res.json({
         'document': 'patched',
-        'received': req.body
+        'received': req.body,
+        'headers': req.headers
       });
     }
   },
