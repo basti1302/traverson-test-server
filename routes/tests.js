@@ -128,6 +128,17 @@ var json = {
         'param': req.params[0],
         'id': req.params[1]
       });
+    },
+    post: function(req, res) {
+      if (req.query.fail) {
+        res.status(400).json({
+          'nope': 'nope'
+        });
+      }
+      res.status(201).json({
+        'document': 'created',
+        'received': req.body
+      });
     }
   },
 
@@ -274,6 +285,7 @@ router.get('/third', json.third.get);
 router.get('/basic/auth', basicAuth('traverson', 'verysecretpassword'),
     json.auth.get);
 router.get(/^\/(\w+)\/fixed\/(\w+)?$/, json.uriTemplate.get);
+router.post(/^\/(\w+)\/fixed\/(\w+)?$/, json.uriTemplate.post);
 router.post('/postings', json.postings.post);
 router.put('/puttings/42', json.puttings.put);
 router.patch('/patch/me', json.patchMe.patch);
