@@ -131,7 +131,7 @@ var json = {
     },
     post: function(req, res) {
       if (req.query.fail) {
-        res.status(400).json({
+        return res.status(400).json({
           'nope': 'nope'
         });
       }
