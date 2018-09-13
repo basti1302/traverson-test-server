@@ -1,6 +1,6 @@
 {
   "name": "traverson-test-server",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "Test server used in various Traverson projects.",
   "repository": {
     "type": "git",
