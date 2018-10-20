@@ -20,6 +20,11 @@
   "bin": {
     "start-traverson-test-server": "bin/start-test-server.js"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "keywords": [
     "Traverson"
   ],
@@ -33,5 +38,8 @@
     "express": "^4.16.2",
     "method-override": "^3.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  }
 }
