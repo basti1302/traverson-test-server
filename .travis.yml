@@ -1,4 +1,8 @@
-language: node_js
+version: ~> 1.0
+
+import:
+  - form8ion/.travis-ci:node.yml
+  - traverson/.travis-ci:authenticated-semantic-release-stage.yml
 
 node_js:
 - '10.6.0'
@@ -6,18 +10,3 @@ node_js:
 - '7'
 - '8'
 - '9'
-
-jobs:
-  include:
-    - stage: release
-      node_js: 10
-      script: skip
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script: npx semantic-release
-
-env:
-  global:
-  - FORCE_COLOR=1
-  - NPM_CONFIG_COLOR=always
