@@ -1,7 +1,7 @@
 traverson-test-server
 =====================
 
-[![Build Status](https://travis-ci.org/traverson/traverson-test-server.png?branch=master)](https://travis-ci.org/traverson/traverson-test-server)
+[![Build Status](https://img.shields.io/travis/com/traverson/traverson-test-server.svg?branch=master)](https://travis-ci.com/traverson/traverson-test-server)
 [![Dependency Status](https://david-dm.org/traverson/traverson-test-server.png)](https://david-dm.org/traverson/traverson-test-server)
 [![NPM](https://nodei.co/npm/traverson-test-server.png?downloads=true&stars=true)](https://nodei.co/npm/traverson-test-server/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/traverson/traverson-test-server.svg)](https://greenkeeper.io/)
